@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://jssol.in/sitemap.xml
+Sitemap: https://jothisoftwaresolutions.com/sitemap.xml
