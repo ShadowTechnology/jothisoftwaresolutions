@@ -1,77 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    /* Cyber Dark Palette by Default */
+    --background: 240 10% 3.5%; /* Ultra-dark backdrop (#08080a) */
+    --foreground: 0 0% 98%;
 
-    --card: 210 40% 98%;
-    --card-foreground: 222 47% 11%;
+    --card: 240 10% 6%; /* Deep grey/black for glass containers (#0d0d10) */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 199 89% 48%;
+    /* Premium Neon Gradients HSL */
+    --primary: 263 90% 60%; /* Electric Violet (#8B5CF6) */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 240 5% 12%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 16 85% 57%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 190 95% 50%; /* Electric Cyan (#06B6D4) */
+    --accent-foreground: 240 10% 3.5%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 342 90% 50%; /* Glowing Magenta/Red (#F43F5E) */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 199 89% 48%;
+    --border: 240 5% 16%;
+    --input: 240 5% 14%;
+    --ring: 263 90% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(222 47% 25%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(16 85% 57%) 0%, hsl(340 82% 52%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsla(222, 47%, 11%, 0.03) 0%, hsla(222, 47%, 11%, 0.01) 100%);
-    --shadow-glow: 0 0 60px -15px hsl(199 89% 48% / 0.3);
-    --shadow-card: 0 25px 50px -12px hsl(222 47% 11% / 0.08);
+    /* Custom Futuristic Gradients & 3D Tokens */
+    --gradient-primary: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #06B6D4 100%);
+    --gradient-accent: linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%);
+    --gradient-dark: radial-gradient(circle at top, #0d0b21 0%, #05040a 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(139, 92, 246, 0.03) 0%, rgba(6, 182, 212, 0.01) 100%);
+    
+    --shadow-glow: 0 0 40px -10px rgba(139, 92, 246, 0.5);
+    --shadow-glow-cyan: 0 0 40px -10px rgba(6, 182, 212, 0.5);
+    --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
 
-    --sidebar-background: 210 40% 98%;
-    --sidebar-foreground: 222 47% 11%;
-    --sidebar-primary: 199 89% 48%;
+    --sidebar-background: 240 10% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 263 90% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-accent: 240 5% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 5% 16%;
+    --sidebar-ring: 263 90% 60%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Retain dark variables inside .dark class as well */
+    --background: 240 10% 3.5%;
+    --foreground: 0 0% 98%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border selection:bg-primary/30 selection:text-white scroll-smooth;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-family: 'Inter', sans-serif;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Custom Cyber Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #08080a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e1e24;
+    border-radius: 4px;
+    border: 2px solid #08080a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
   }
 }
 
@@ -102,17 +128,75 @@
     background: var(--gradient-dark);
   }
 
+  /* Immersive Glassmorphism */
   .bg-glass {
-    background: var(--gradient-glass);
+    background: rgba(13, 13, 16, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .bg-glass-heavy {
+    background: rgba(8, 8, 10, 0.85);
     backdrop-filter: blur(20px);
-    border: 1px solid hsla(210, 40%, 98%, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
 
+  .shadow-glow-cyan {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
+
+  /* 3D Perspective Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Cyber Grid Background overlay */
+  .bg-cyber-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  }
+
+  /* Animated Neon Text Border Glow */
+  .border-glow-neon {
+    position: relative;
+  }
+  .border-glow-neon::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(90deg, #8B5CF6, #EC4899, #06B6D4, #8B5CF6);
+    background-size: 300% 100%;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: flow-gradient 8s linear infinite;
+  }
+  .border-glow-neon:hover::after {
+    opacity: 1;
+  }
+}
+
+@keyframes flow-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

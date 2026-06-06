@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { 
   Search, 
@@ -7,37 +9,46 @@ import {
   Instagram, 
   PenTool 
 } from "lucide-react";
+import Link from "next/link";
+import { ThreeDTilt } from "./ThreeDTilt";
+import { services as serviceData } from "@/data/services";
 
-const services = [
+const serviceStyles = [
   {
     icon: Search,
-    title: "SEO Optimization",
-    description: "Dominate search rankings with our data-driven SEO strategies. Jothi Software Solutions optimizes your website to attract high-quality organic traffic and boost your visibility in Ambur, Tamil Nadu and beyond.",
+    glowColor: "rgba(16, 185, 129, 0.15)", // Emerald Green glow
+    borderColor: "group-hover:border-emerald-500/50",
+    iconBg: "bg-emerald-500/10 text-emerald-400",
   },
   {
     icon: Share2,
-    title: "Social Media Marketing",
-    description: "Build a powerful social presence across Facebook, Instagram, LinkedIn & more. We create engaging content and strategies that connect with your target audience and drive real engagement.",
+    glowColor: "rgba(139, 92, 246, 0.15)", // Purple glow
+    borderColor: "group-hover:border-violet-500/50",
+    iconBg: "bg-violet-500/10 text-violet-400",
   },
   {
     icon: Target,
-    title: "Search Engine Marketing",
-    description: "Maximize ROI with precision-targeted Google Ads & PPC campaigns. Our SEM experts deliver ads that convert browsers into loyal customers with measurable results.",
+    glowColor: "rgba(245, 158, 11, 0.15)", // Amber glow
+    borderColor: "group-hover:border-amber-500/50",
+    iconBg: "bg-amber-500/10 text-amber-400",
   },
   {
     icon: Globe,
-    title: "Website Development",
-    description: "Stunning, responsive, and SEO-friendly websites that perform. We build fast-loading digital experiences that captivate visitors and drive conversions for businesses in Tamil Nadu.",
+    glowColor: "rgba(6, 182, 212, 0.15)", // Cyan glow
+    borderColor: "group-hover:border-cyan-500/50",
+    iconBg: "bg-cyan-500/10 text-cyan-400",
   },
   {
     icon: Instagram,
-    title: "Meta Ads Management",
-    description: "Unlock the power of Facebook & Instagram advertising. We create highly targeted ad campaigns that reach your ideal customers and deliver exceptional return on ad spend.",
+    glowColor: "rgba(236, 72, 153, 0.15)", // Pink glow
+    borderColor: "group-hover:border-pink-500/50",
+    iconBg: "bg-pink-500/10 text-pink-400",
   },
   {
     icon: PenTool,
-    title: "Content Creation",
-    description: "Compelling content that tells your brand story. From blogs and videos to graphics and copywriting, we craft content that engages your audience and inspires action.",
+    glowColor: "rgba(99, 102, 241, 0.15)", // Indigo glow
+    borderColor: "group-hover:border-indigo-500/50",
+    iconBg: "bg-indigo-500/10 text-indigo-400",
   },
 ];
 
@@ -61,28 +72,35 @@ const cardVariants = {
 
 export const Services = () => {
   return (
-    <section id="services" className="py-24 bg-gradient-dark relative" aria-label="Digital Marketing Services by Jothi Software Solutions">
-      {/* Background accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+    <section id="services" className="py-24 bg-gradient-dark relative overflow-hidden" aria-label="Digital Marketing Services by Jothi Software Solutions">
+      
+      {/* Decorative neon blobs */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        
+        {/* Header Block */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20 space-y-4"
         >
-          <span className="text-primary font-medium uppercase tracking-wider text-sm">What We Do</span>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold mt-4 mb-6">
-            Our Digital Marketing <span className="text-gradient">Services</span>
+          <span className="text-primary font-bold uppercase tracking-widest text-xs px-3 py-1 rounded-full bg-primary/10">
+            OUR CAPABILITIES
+          </span>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mt-2">
+            Dominate Your Niche with Our <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Comprehensive digital marketing solutions by <strong>Jothi Software Solutions</strong> — tailored to elevate your brand 
-            and accelerate your business growth in Ambur, Tamil Nadu and across India.
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
+            Proven digital solutions customized to elevate your brand presence, 
+            capture high-intent buyer traffic, and scale operations rapidly.
           </p>
         </motion.div>
 
+        {/* 3D Tilt Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -90,24 +108,56 @@ export const Services = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => (
-            <motion.article
+          {serviceData.map((service, index) => {
+            const style = serviceStyles[index];
+
+            return (
+            <motion.div
               key={index}
               variants={cardVariants}
-              className="group p-8 rounded-2xl bg-glass hover:bg-card transition-all duration-500 shadow-card"
-              aria-label={service.title}
+              className="h-full"
             >
-              <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:shadow-glow transition-shadow duration-500">
-                <service.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-heading font-semibold mb-3 text-foreground">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </motion.article>
-          ))}
+              <ThreeDTilt 
+                maxTilt={10} 
+                className="group h-full rounded-2xl bg-glass border border-white/5 shadow-card hover:shadow-[0_0_30px_rgba(255,255,255,0.02)] transition-colors duration-500 overflow-hidden three-d-card"
+                data-cursor-label="EXPLORE"
+              >
+                <div 
+                  className="p-8 h-full flex flex-col justify-between"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at top right, ${style.glowColor}, transparent 55%)`
+                  }}
+                >
+                  <div>
+                    {/* Glowing Category Specific Icon Box */}
+                    <div className={`w-14 h-14 rounded-2xl ${style.iconBg} flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300`}>
+                      <style.icon className="w-7 h-7" />
+                    </div>
+
+                    <h3 className="text-xl font-heading font-bold mb-3 text-foreground tracking-tight group-hover:text-primary transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Micro interaction details: Arrow Indicator */}
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+                    aria-label={`Learn more about ${service.title} — ${service.shortTitle} in Ambur, Tamil Nadu`}
+                  >
+                    <span>Learn More</span>
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">-&gt;</span>
+                  </Link>
+
+                </div>
+              </ThreeDTilt>
+            </motion.div>
+          );
+          })}
         </motion.div>
       </div>
     </section>

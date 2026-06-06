@@ -1,107 +1,136 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { CheckCircle2, TrendingUp, Users, Zap, Shield, HeartHandshake } from "lucide-react";
+import { CheckCircle2, TrendingUp, Users, Zap, Shield, HeartHandshake, Award } from "lucide-react";
+import { ThreeDTilt } from "./ThreeDTilt";
 
 const features = [
   {
     icon: TrendingUp,
     title: "Data-Driven Results",
-    description: "Every strategy is backed by analytics and insights to ensure maximum ROI for your business.",
+    description: "Every campaign is backed by precision analysis to secure the highest ROI for your brand.",
+    glow: "rgba(6, 182, 212, 0.05)",
   },
   {
     icon: Users,
-    title: "Dedicated Team",
-    description: "A passionate team of digital marketing experts committed to your success at every step.",
+    title: "Dedicated Experts",
+    description: "A seasoned digital marketing team focused on practical strategy, execution, and measurable growth.",
+    glow: "rgba(139, 92, 246, 0.05)",
   },
   {
     icon: Zap,
-    title: "Fast Turnaround",
-    description: "Quick execution without compromising on quality or attention to detail — we respect deadlines.",
+    title: "Agile Turnaround",
+    description: "Flawless rapid-cycle execution. We respect deadlines and push campaigns to market fast.",
+    glow: "rgba(236, 72, 153, 0.05)",
   },
   {
     icon: Shield,
-    title: "Transparent Process",
-    description: "Clear communication, regular reports, and full transparency keep you informed always.",
+    title: "Absolute Transparency",
+    description: "Clear client reporting pipelines, monthly analytic digests, and real-time dashboard updates.",
+    glow: "rgba(16, 185, 129, 0.05)",
   },
   {
     icon: HeartHandshake,
-    title: "Long-term Partnership",
-    description: "We grow with you, adapting strategies as your business evolves and scales new heights.",
+    title: "Strategic Partnerships",
+    description: "We align as partners, constantly adapting strategies as your enterprise expands.",
+    glow: "rgba(245, 158, 11, 0.05)",
   },
   {
-    icon: CheckCircle2,
+    icon: Award,
     title: "Proven Track Record",
-    description: "200+ happy clients and 500+ successful campaigns across Tamil Nadu speak for our quality.",
+    description: "Over 200 satisfied organizations across Tamil Nadu trust us to handle their digital pipelines.",
+    glow: "rgba(99, 102, 241, 0.05)",
   },
 ];
 
 export const WhyUs = () => {
   return (
     <section id="why-us" className="py-24 bg-card relative overflow-hidden" aria-label="Why Choose Jothi Software Solutions">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      
+      {/* Visual cyber backglows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left content */}
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-16 items-center">
+          
+          {/* Left Content Pane */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 space-y-6"
           >
-            <span className="text-primary font-medium uppercase tracking-wider text-sm">Why Choose Us</span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mt-4 mb-6">
-              Why Choose <br />
+            <span className="text-primary font-bold uppercase tracking-widest text-xs px-3 py-1 rounded-full bg-primary/10">
+              OUR EDGE
+            </span>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mt-2">
+              Why Partner with <br />
               <span className="text-gradient">Jothi Software Solutions?</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              At <strong>Jothi Software Solutions</strong> (JothiSoftware), we don't just execute campaigns — we craft 
-              digital experiences that resonate with your audience. Our approach combines creativity with analytics 
-              to deliver measurable results that matter for businesses in Ambur, Tamil Nadu and across India.
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              We create practical digital growth systems for local businesses. Our agency combines clear design,
+              search optimization, paid media, and reporting to strengthen your presence in Tamil Nadu.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              {["10+ Years Experience", "200+ Happy Clients", "24/7 Support"].map((item, i) => (
-                <div
+            {/* Quick check details */}
+            <div className="space-y-3 pt-4">
+              {["10+ Years Digital Experience", "200+ Active Clients", "Transparent Monthly Audits"].map((item, i) => (
+                <motion.div
                   key={i}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex items-center gap-3"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-primary" />
-                  <span className="text-sm font-medium text-foreground">{item}</span>
-                </div>
+                  <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center border border-accent/20">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
+                  </div>
+                  <span className="text-sm font-semibold text-foreground">{item}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right grid */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid sm:grid-cols-2 gap-4"
-          >
+          {/* Right Features Grid */}
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
             {features.map((feature, index) => (
-              <motion.article
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-glass hover:bg-muted/50 transition-colors"
-                aria-label={feature.title}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <feature.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="font-heading font-semibold text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {feature.description}
-                </p>
-              </motion.article>
+                <ThreeDTilt 
+                  maxTilt={8}
+                  className="rounded-xl border border-white/5 bg-glass overflow-hidden h-full cursor-pointer hover:border-white/10 group transition-colors duration-300"
+                >
+                  <div 
+                    className="p-6 h-full space-y-4"
+                    style={{
+                      backgroundImage: `radial-gradient(circle at top left, ${feature.glow}, transparent 50%)`
+                    }}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-primary group-hover:text-accent group-hover:border-accent/30 transition-all duration-300">
+                      <feature.icon className="w-5 h-5" />
+                    </div>
+                    
+                    <h3 className="font-heading font-bold text-foreground text-lg group-hover:text-primary transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </ThreeDTilt>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
