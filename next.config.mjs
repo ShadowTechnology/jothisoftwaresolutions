@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  basePath: "/jothisoftwaresolutions",
+  assetPrefix: "/jothisoftwaresolutions",
+
   async redirects() {
     return [
       {
@@ -27,7 +32,9 @@ const nextConfig = {
       },
     ];
   },
+
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
